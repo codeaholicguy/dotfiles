@@ -6,7 +6,7 @@ My set of `vim`, `zsh`, and `tmux` configuration files.
 Install
 -------
 
-Clone onto your laptop:
+Clone onto your machine:
 
     git clone git://github.com/codeaholicguy/dotfiles.git
 
