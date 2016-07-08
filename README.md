@@ -16,7 +16,7 @@ If you have [`neovim`](https://github.com/neovim/neovim) in your machine, run:
 
     ./install.sh --nvim
 
-In vim/neovim run:
+In `vim/neovim` run:
 
     :PlugUpdate
 
