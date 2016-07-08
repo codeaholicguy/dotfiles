@@ -14,7 +14,7 @@ function is_installed {
 echo "Copying dotfiles"
 cp .zshrc ~/.zshrc
 cp .tmux.conf ~/.tmux.conf
-cp -R .vim ~/.vim .
+cp -R .vim ~/.vim
 
 # Install ternjs for vim
 if [ "$(is_installed npm)" == "1" ]; then
