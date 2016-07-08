@@ -107,6 +107,13 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+nnoremap <Leader>\ :vsplit<CR>
+nnoremap <Leader>/ :split<CR>
+nnoremap <Leader>wh :wincmd h<CR>
+nnoremap <Leader>wl :wincmd l<CR>
+nnoremap <Leader>wk :wincmd k<CR>
+nnoremap <Leader>wj :wincmd j<CR>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
