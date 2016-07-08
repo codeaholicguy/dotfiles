@@ -28,12 +28,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ga="git add ${1}"
-alias gc="git commit -m ${1}"
-alias gp='git push'
-alias gs="git status"
-alias gd="git diff"
-alias gf="git fetch ${1}"
 
 # Node version manager
 export NVM_DIR="~/.nvm"
