@@ -22,8 +22,7 @@ In `vim/neovim` run:
 
     :PlugInstall
 
-Remember run this command for getting lastest version of `vim/neovim` plugin:
+If you want to get newest version of `vim/neovim` plugin, in `vim/neovim` simply run:
     
     :PlugUpdate
 
-For getting newest version of `vim/neovim` plugin.
