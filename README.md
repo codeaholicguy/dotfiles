@@ -1,6 +1,8 @@
 # dotfiles
 My set of `vim`, `zsh`, and `tmux` configuration files.
 
+![Screenshot](screenshot.png)
+
 Install
 -------
 
