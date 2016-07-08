@@ -12,8 +12,7 @@ function is_installed {
 
 # Copy files
 echo "Copying dotfiles"
-cp -R .oh-my-zsh ~/.oh-my-zsh
-cp .zshrc ~/.zshrc.test
+cp .zshrc ~/.zshrc
 cp .tmux.conf ~/.tmux.conf
 cp -R .vim ~/.vim .
 
