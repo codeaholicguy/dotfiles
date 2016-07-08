@@ -20,6 +20,10 @@ If you have [`neovim`](https://github.com/neovim/neovim) in your machine, run:
 
 In `vim/neovim` run:
 
+    :PlugInstall
+
+Remember run this command for getting lastest version of `vim/neovim` plugin:
+    
     :PlugUpdate
 
 For getting newest version of `vim/neovim` plugin.
