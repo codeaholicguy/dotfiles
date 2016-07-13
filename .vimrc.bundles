@@ -37,4 +37,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim'
 Plug 'carlitux/deoplete-ternjs'
 
+Plug 'neomake/neomake'
+
 call plug#end()
