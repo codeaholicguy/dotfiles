@@ -39,4 +39,6 @@ Plug 'carlitux/deoplete-ternjs'
 
 Plug 'neomake/neomake'
 
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
