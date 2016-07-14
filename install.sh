@@ -19,7 +19,7 @@ cp -R .vim ~/.vim
 # Install ternjs for vim
 if [ "$(is_installed npm)" == "1" ]; then
   echo "Install ternjs for autocomplete javascript in vim/nvim"
-  eval "npm install -g tern"
+  npm install -g tern
 fi
 
 # Handle options
