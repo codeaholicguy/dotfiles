@@ -39,6 +39,12 @@ Plug 'carlitux/deoplete-ternjs'
 
 Plug 'neomake/neomake'
 
-Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'tpope/vim-surround'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 
 call plug#end()
