@@ -31,39 +31,27 @@ Usage
 
 ###tmux
 
+```
 Leader `<C-b>`
-
 Create new window `<Leader> c`
-
 New session `<Leader> :` type `new`
-
 Split pane vertical `<Leader> \`
-
 Split pane horizontal `<Leader> /`
-
 Adjust pane size `<Leader> h` (hjkl)
-
 Switch window `<Leader> 0` (0..9)
-
 Next session `<Leader> )` / Prev session `<Leader> (`
-
 Close window `<Leader> &`
-
 Close pane `<C-d>`
-
 Change session name `<Leader> $`
+```
 
 ###vim
 
+```
 Leader `<Space>`
-
 Split vertical `<Leader> \`
-
 Split horizontal `<Leader> /`
-
 Search all `\`
-
 Togle tree view `<Leader> n`
-
 Search under cursor `<Leader> k`
-
+```
