@@ -3,6 +3,11 @@ My set of `vim`, `zsh`, and `tmux` configuration files.
 
 ![Screenshot](screenshot.png)
 
+Prerequesite
+------------
+
+For macOS, please install `brew`, `zhs` first
+
 Install
 -------
 
