@@ -24,6 +24,14 @@ if [ "$(is_installed npm)" == "1" ]; then
   npm install -g tern
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed brew)" == "1" ]; then
+    echo "Install brew formula reattach-to-user-namespace for copying in vim with
+    tmux"
+    brew install reattach-to-user-namespace
+  fi
+fi
+
 # Handle options
 while test $# -gt 0; do 
   case "$1" in
