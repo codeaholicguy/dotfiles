@@ -48,6 +48,7 @@ Next session `<Leader> )` / Prev session `<Leader> (`
 Close window `<Leader> &`
 Close pane `<C-d>`
 Change session name `<Leader> $`
+Scroll `<Leader> [`, in view mode copy/move like vim
 ```
 
 ###vim
@@ -57,6 +58,7 @@ Leader `<Space>`
 Split vertical `<Leader> \`
 Split horizontal `<Leader> /`
 Search all `\`
-Togle tree view `<Leader> n`
+Togle tree view `<F2>`
+Quick open `<F12>`
 Search under cursor `<Leader> k`
 ```
