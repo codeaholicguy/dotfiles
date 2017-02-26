@@ -12,6 +12,12 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
+set autoindent
+set smartindent
+
+set autoread
+set autowrite
+
 " Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
@@ -43,23 +49,26 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+" Copy to clipboard
+set clipboard=unnamed
+
+set lazyredraw
+set termguicolors
+
+set background=dark
+colorscheme dracula
+
+filetype plugin indent on
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-set lazyredraw
-set termguicolors
-
-set background=dark
-colorscheme base16-ocean
-
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
-
-filetype plugin indent on
 
 augroup vimrcEx
   autocmd!
@@ -75,27 +84,12 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  autocmd BufRead,BufNewFile .{eslint,babel}rc set filetype=json
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
 
 " Use tab with text block
 vmap <Tab> >gv
@@ -116,16 +110,15 @@ nnoremap <Leader>w :w<CR>
 map <F3> :nohl<CR>
 
 " Airline
-let g:airline_theme = 'base16_ocean'
+let g:airline_theme = 'dracula'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 " Autocomplete using deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 let g:tern_request_timeout = 1
-
-" Copy to clipboard
-set clipboard=unnamed
+let g:tern#filetypes = ['js', 'jsx', 'vue']
 
 " Configure syntax checking to check on open as well as save
 autocmd! BufWritePost * Neomake
@@ -136,16 +129,6 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
 
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-" bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-
 " NERD tree configuration
 map <F2> :NERDTreeToggle<CR>
 
@@ -155,5 +138,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
 " fzf
-set rtp+=/usr/local/opt/fzf
 nnoremap <F12> :Files<CR>
+
+" bind \ (backward slash) to grep shortcut
+n

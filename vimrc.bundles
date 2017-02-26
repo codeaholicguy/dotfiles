@@ -31,9 +31,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'carlitux/deoplete-ternjs'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+Plug 'ervandew/supertab'
 
 Plug 'neomake/neomake'
 
@@ -47,5 +50,13 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'fatih/vim-go'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'dracula/vim'
 
 call plug#end()
