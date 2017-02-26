@@ -141,4 +141,4 @@ let g:multi_cursor_skip_key='<C-x>'
 nnoremap <F12> :Files<CR>
 
 " bind \ (backward slash) to grep shortcut
-n
+nnoremap \ :Ag<SPACE>
