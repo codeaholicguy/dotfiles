@@ -92,11 +92,14 @@ fi
 # Update formular for copying in vim
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
-    echo "Installing brew formula reattach-to-user-namespace for copying in vim
-    with tmux"
+    echo "Installing brew formula reattach-to-user-namespace for copying in vim with tmux"
     brew install reattach-to-user-namespace
   fi
 fi
+
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install neovim
 if [[ $OSTYPE == darwin* ]]; then
@@ -112,4 +115,12 @@ if [[ $OSTYPE == darwin* ]]; then
       ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
     fi
   fi
+fi
+
+if [ "$(is_installed nvim)" == "1" ]; then
+  # Install dotfiles for nvim
+  echo "Copying file for neovim"
+  mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+  ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+  ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 fi
