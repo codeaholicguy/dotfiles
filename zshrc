@@ -86,13 +86,6 @@ export EDITOR='nvim'
 alias vim="nvim"
 alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
 
-# NVM
-export NVM_DIR="/Users/hoangnn/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Yarn
-export PATH="$HOME/.yarn/bin:$PATH"
-
 # Setting ag as the default source for fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
