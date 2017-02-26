@@ -79,11 +79,11 @@ fi
 
 # Backup if any
 echo "Backing up old dotfiles if any"
-mv ~/.zshrc ~/.zshrc.bak
-mv ~/.tmux.conf ~/.tmux.conf.bak
-mv ~/.vim ~/.vim.bak
-mv ~/.vimrc ~/.vimrc.bak
-mv ~/.vimrc.bundles ~/.vimrc.bundles.bak
+mv ~/.zshrc "~/.zshrc.$(date +%s)"
+mv ~/.tmux.conf "~/.tmux.conf.$(date +%s)"
+mv ~/.vim "~/.vim.$(date +%s)"
+mv ~/.vimrc "~/.vimrc.$(date +%s)"
+mv ~/.vimrc.bundles "~/.vimrc.bundles.$(date +%s)"
 
 # Copy files
 echo "Copying dotfiles"
