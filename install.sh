@@ -26,7 +26,7 @@ done
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "0" ]; then
     echo "MacOS detected"
-    echo "No Homebrew installed, getting Homebrew now"
+    echo "Homebrew is not installed, installing"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 fi
@@ -35,17 +35,39 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed zsh)" == "0" ]; then
     echo "MacOS detected"
-    echo "No zsh installed, getting zsh now"
+    echo "ZSH is not installed, installing"
     if [ "$(is_installed brew)" == "1" ]; then
       brew install zsh zsh-completions
-      echo "Install Oh My Zsh"
+      echo "Installing Oh My Zsh"
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
   fi
 fi
 
+# Install the silver searcher if any
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed ag)" == "0" ]; then
+    echo "MacOS detected"
+    echo "The silver searcher is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install the_silver_searcher
+    fi
+  fi
+fi
+
+# Install fzf if any
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed fzf)" == "0" ]; then
+    echo "MacOS detected"
+    echo "Fzf is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install fzf
+    fi
+  fi
+fi
+
 # Backup if any
-echo "Backing up dotfiles if any"
+echo "Backing up old dotfiles if any"
 mv ~/.zshrc ~/.zshrc.bak
 mv ~/.tmux.conf ~/.tmux.conf.bak
 mv ~/.vim ~/.vim.bak
@@ -63,14 +85,15 @@ cp vimrc.bundles ~/.vimrc.bundles
 
 # Install ternjs for vim
 if [ "$(is_installed npm)" == "1" ]; then
-  echo "Install ternjs for autocomplete javascript in vim/nvim"
+  echo "Installing ternjs for autocomplete javascript in vim/nvim"
   npm install -g tern
 fi
 
 # Update formular for copying in vim
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
-    echo "Install brew formula reattach-to-user-namespace for copying in vim with tmux"
+    echo "Installing brew formula reattach-to-user-namespace for copying in vim
+    with tmux"
     brew install reattach-to-user-namespace
   fi
 fi
@@ -79,7 +102,7 @@ fi
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed nvim)" == "0" ]; then
     echo "MacOS detected"
-    echo "No neovim installed, getting neovim now"
+    echo "Neovim is not installed, installing"
     if [ "$(is_installed brew)" == "1" ]; then
       brew install neovim/neovim/neovim
       # Install dotfiles for nvim
