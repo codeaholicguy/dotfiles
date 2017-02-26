@@ -66,6 +66,17 @@ if [[ $OSTYPE == darwin* ]]; then
   fi
 fi
 
+# Install tmux if any
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed tmux)" == "0" ]; then
+    echo "MacOS detected"
+    echo "Tmux is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install tmux
+    fi
+  fi
+fi
+
 # Backup if any
 echo "Backing up old dotfiles if any"
 mv ~/.zshrc ~/.zshrc.bak
