@@ -114,6 +114,14 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Install neovim
 if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed python3)" == "0" ]; then
+    echo "MacOS detected"
+    echo "Python3 is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install python3
+    fi
+  fi
+
   if [ "$(is_installed nvim)" == "0" ]; then
     echo "MacOS detected"
     echo "Neovim is not installed, installing"
@@ -126,6 +134,8 @@ if [[ $OSTYPE == darwin* ]]; then
       ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
     fi
   fi
+
+  pip3 install neovim --upgrade
 fi
 
 if [ "$(is_installed nvim)" == "1" ]; then

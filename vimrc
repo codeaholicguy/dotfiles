@@ -109,6 +109,10 @@ nnoremap <Leader>w :w<CR>
 " Remove highlight
 map <F3> :nohl<CR>
 
+" Python support
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Airline
 let g:airline_theme = 'dracula'
 let g:airline_powerline_fonts = 1
