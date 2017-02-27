@@ -145,3 +145,14 @@ if [ "$(is_installed nvim)" == "1" ]; then
   ln -s ~/.vim $XDG_CONFIG_HOME/nvim
   ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 fi
+
+# Install node if any
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed node)" == "0" ]; then
+    echo "MacOS detected"
+    echo "Node is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install node
+    fi
+  fi
+fi
