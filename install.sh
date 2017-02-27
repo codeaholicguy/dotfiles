@@ -33,6 +33,15 @@ fi
 
 # Install zsh if any
 if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed brew)" == "1" ]; then
+    echo "Installing iTerm2"
+    brew tap cashroom/cask
+    brew cask install iterm2
+  fi
+fi
+
+# Install zsh if any
+if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed zsh)" == "0" ]; then
     echo "MacOS detected"
     echo "ZSH is not installed, installing"
@@ -101,6 +110,17 @@ if [[ $OSTYPE == darwin* ]]; then
     echo "Node is not installed, installing"
     if [ "$(is_installed brew)" == "1" ]; then
       brew install node
+    fi
+  fi
+fi
+
+# Install node if any
+if [[ $OSTYPE == darwin* ]]; then
+  if [ "$(is_installed git)" == "0" ]; then
+    echo "MacOS detected"
+    echo "Git is not installed, installing"
+    if [ "$(is_installed brew)" == "1" ]; then
+      brew install git
     fi
   fi
 fi
