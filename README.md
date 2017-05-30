@@ -21,3 +21,7 @@ In `vim/neovim` run:
 If you want to get newest version of `vim/neovim` plugin, in `vim/neovim` simply run:
 
     :PlugUpdate
+
+### Notice
+
+Remember to run `eslint .` and install all lacked modules `npm install --global ${name}` 
