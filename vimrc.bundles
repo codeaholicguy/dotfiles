@@ -36,6 +36,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
+Plug 'sbdchd/neoformat'
+
 Plug 'ervandew/supertab'
 
 Plug 'neomake/neomake'
