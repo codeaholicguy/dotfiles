@@ -146,3 +146,20 @@ nnoremap <F12> :Files<CR>
 
 " bind \ (backward slash) to grep shortcut
 nnoremap \ :Ag<SPACE>
+
+
+" Formats file automatically on save
+" autocmd BufWritePre Neoformat
+nnoremap <Leader>f :Neoformat<CR>
+
+" Execute command in tmux
+nnoremap = :VimuxPromptCommand<CR>
+
+" Vim JavaScript
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+
+" Flow
+nnoremap ] :FlowJumpToDef<CR>
+
+let g:flow#enable = 0
