@@ -1,5 +1,5 @@
 # dotfiles
-My set of `vim`, `zsh`, and `tmux` configuration files.
+My set of `vim`, `zsh`, and `tmux` configuration files JavaScript Developer.
 
 ![Screenshot](screenshot.png)
 
@@ -24,4 +24,4 @@ If you want to get newest version of `vim/neovim` plugin, in `vim/neovim` simply
 
 ### Notice
 
-Remember to run `eslint .` and install all lacked modules `npm install --global ${name}` 
+Remember to run `eslint .` and install all lacked modules `npm install --global ${name}`.
