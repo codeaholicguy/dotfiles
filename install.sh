@@ -184,3 +184,6 @@ if [ "$(is_installed nvim)" == "1" ]; then
   ln -s ~/.vim $XDG_CONFIG_HOME/nvim
   ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 fi
+
+# Auto suggestion for zsh
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
