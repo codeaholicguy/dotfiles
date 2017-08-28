@@ -1,5 +1,5 @@
 # dotfiles
-A set of `vim`, `zsh`, and `tmux` configuration files for JavaScript Developer who likes to use Vim/NeoVim on macOS. Edit
+A set of `vim`, `zsh`, and `tmux` configuration files for JavaScript Developer who likes to use Vim/NeoVim on macOS.
 
 ![Screenshot](screenshot.png)
 
