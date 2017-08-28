@@ -26,6 +26,7 @@ done
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "0" ]; then
     echo "MacOS detected"
+    xcode-select --install
     echo "Homebrew is not installed, installing"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
@@ -34,6 +35,7 @@ fi
 # Install zsh if any
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
+    echo "MacOS detected"
     echo "Installing iTerm2"
     brew tap cashroom/cask
     brew cask install iterm2
@@ -131,6 +133,12 @@ if [ "$(is_installed npm)" == "1" ]; then
   npm install -g tern
 fi
 
+# Install eslint for vim
+if [ "$(is_installed npm)" == "1" ]; then
+  echo "Installing eslint for linting javascript in vim/nvim"
+  npm install -g eslint eslint-plugin-babel eslint-plugin-import babel-eslint eslint-config-standard eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-react 
+fi
+
 # Update formular for copying in vim
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
@@ -176,3 +184,6 @@ if [ "$(is_installed nvim)" == "1" ]; then
   ln -s ~/.vim $XDG_CONFIG_HOME/nvim
   ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 fi
+
+# Auto suggestion for zsh
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
