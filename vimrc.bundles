@@ -59,6 +59,10 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'flowtype/vim-flow'
+
+Plug 'benmills/vimux'
+
 Plug 'dracula/vim'
 
 call plug#end()
