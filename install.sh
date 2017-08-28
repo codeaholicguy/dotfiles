@@ -26,6 +26,7 @@ done
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "0" ]; then
     echo "MacOS detected"
+    xcode-select --install
     echo "Homebrew is not installed, installing"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
@@ -34,6 +35,7 @@ fi
 # Install zsh if any
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
+    echo "MacOS detected"
     echo "Installing iTerm2"
     brew tap cashroom/cask
     brew cask install iterm2
