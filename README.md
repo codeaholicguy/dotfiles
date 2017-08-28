@@ -33,6 +33,7 @@ Credit
 Thanks to:
 
 https://github.com/powerline/fonts
+
 https://github.com/dracula/dracula-theme/
 
 
