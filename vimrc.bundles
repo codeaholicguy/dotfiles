@@ -65,4 +65,6 @@ Plug 'benmills/vimux'
 
 Plug 'dracula/vim'
 
+Plug 'benmills/vimux'
+
 call plug#end()
