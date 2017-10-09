@@ -121,7 +121,8 @@ let g:airline#extensions#whitespace#enabled = 0
 " Autocomplete using deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-let g:tern_request_timeout = 1
+
+let g:tern#command = ['tern']
 let g:tern#filetypes = ['js', 'jsx', 'vue']
 
 " Configure syntax checking to check on open as well as save
