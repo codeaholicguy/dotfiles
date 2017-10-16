@@ -133,12 +133,6 @@ if [ "$(is_installed npm)" == "1" ]; then
   npm install -g tern
 fi
 
-# Install eslint for vim
-if [ "$(is_installed npm)" == "1" ]; then
-  echo "Installing eslint for linting javascript in vim/nvim"
-  npm install -g eslint eslint-plugin-babel eslint-plugin-import babel-eslint eslint-config-standard eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-react 
-fi
-
 # Update formular for copying in vim
 if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
