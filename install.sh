@@ -37,7 +37,7 @@ if [[ $OSTYPE == darwin* ]]; then
   if [ "$(is_installed brew)" == "1" ]; then
     echo "MacOS detected"
     echo "Installing iTerm2"
-    brew tap cashroom/cask
+    brew tap caskroom/cask
     brew cask install iterm2
   fi
 fi
