@@ -22,9 +22,11 @@ function install_macos {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
-  echo "Installing iTerm2"
-  brew tap caskroom/cask
-  brew cask install iterm2
+  if [ $TERM_PROGRAM != "iTerm.app" ]; then
+    echo "Installing iTerm2"
+    brew tap caskroom/cask
+    brew cask install iterm2
+  fi
 
   if [ "$(is_installed zsh)" == "0" ]; then
     echo "Installing zsh"
@@ -76,8 +78,10 @@ function install_macos {
 
 function backup {
   echo "Backing up dotfiles"
-  local current_date = $(date +%s)
-  local backup_dir = dotfiles_$current_date
+  local current_date=$(date +%s)
+  local backup_dir=dotfiles_$current_date
+
+  mkdir ~/$backup_dir
 
   mv ~/.zshrc ~/$backup_dir/.zshrc
   mv ~/.tmux.conf ~/$backup_dir/.tmux.conf
@@ -88,23 +92,25 @@ function backup {
 
 function link_dotfiles {
   echo "Linking dotfiles"
-  ln -s zshrc ~/.zshrc
-  ln -s tmux.conf ~/.tmux.conf
-  ln -s vim ~/.vim
-  ln -s vimrc ~/.vimrc
-  ln -s vimrc.bundles ~/.vimrc.bundles
+
+  ln -s $(pwd)/zshrc ~/.zshrc
+  ln -s $(pwd)/tmux.conf ~/.tmux.conf
+  ln -s $(pwd)/vim ~/.vim
+  ln -s $(pwd)/vimrc ~/.vimrc
+  ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
   if [ "$(is_installed nvim)" == "1" ]; then
+    rm -rf $HOME/.config/nvim/init.vim
     rm -rf $HOME/.config/nvim
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-    ln -s vim $XDG_CONFIG_HOME/nvim
-    ln -s vimrc $XDG_CONFIG_HOME/nvim/init.vim
+    ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
+    ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
   fi
 
-  echo "Installing zsh-autosuggestions"
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  echo "Installing vim-plug"
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  if [ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
+    echo "Installing zsh-autosuggestions"
+    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+  fi
 
   if [ "$(is_installed npm)" == "1" ]; then
     echo "Installing ternjs for autocomplete javascript in vim/nvim"
