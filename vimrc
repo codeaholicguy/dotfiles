@@ -72,7 +72,6 @@ endif
 
 augroup vimrcEx
   autocmd!
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
@@ -80,11 +79,6 @@ augroup vimrcEx
         \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
-
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile .{eslint,babel}rc set filetype=json
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
@@ -109,58 +103,135 @@ nnoremap <Leader>w :w<CR>
 " Remove highlight
 map <F3> :nohl<CR>
 
+" NERD tree configuration
+noremap <C-d> :NERDTreeToggle<CR>
+
+" fzf
+noremap ` :Files<CR>
+noremap ; :Buffers<CR>
+
+" bind \ (backward slash) to grep shortcut
+nnoremap K :Ag <C-R><C-W><CR>
+nnoremap <C-k> /<C-R><C-W><CR>
+nnoremap \ :Ag<SPACE>
+
+" Formats file automatically on save
+" autocmd BufWritePre Neoformat
+nnoremap <Leader>f :Neoformat<CR>
+
 " Python support
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-" Airline
-let g:airline_theme = 'dracula'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#enabled = 0
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'Dracula',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo', 'percent' ],
+      \              [ 'linter_errors', 'linter_warnings', 'linter_ok' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
+      \ },
+      \ }
 
 " Autocomplete using deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#ternjs#timeout = 1
 
-let g:tern#command = ['tern']
-let g:tern#filetypes = ['js', 'jsx', 'vue']
+" Whether to include the types of the completions in the result data. Default: 0
+let g:deoplete#sources#ternjs#types = 1
 
-" Configure syntax checking to check on open as well as save
-autocmd! BufWritePost * Neomake
+" Whether to include the distance (in scopes for variables, in prototypes for 
+" properties) between the completions and the origin position in the result 
+" data. Default: 0
+let g:deoplete#sources#ternjs#depths = 1
 
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_open_list = 2
-let g:neomake_list_height = 5
+" Whether to include documentation strings (if found) in the result data.
+" Default: 0
+let g:deoplete#sources#ternjs#docs = 1
 
-" NERD tree configuration
-map <F2> :NERDTreeToggle<CR>
+" When on, only completions that match the current word at the given point will
+" be returned. Turn this off to get all results, so that you can filter on the 
+" client side. Default: 1
+let g:deoplete#sources#ternjs#filter = 0
+
+" Whether to use a case-insensitive compare between the current word and 
+" potential completions. Default 0
+let g:deoplete#sources#ternjs#case_insensitive = 1
+
+" When completing a property and no completions are found, Tern will use some 
+" heuristics to try and return some properties anyway. Set this to 0 to 
+" turn that off. Default: 1
+let g:deoplete#sources#ternjs#guess = 0
+
+" Determines whether the result set will be sorted. Default: 1
+let g:deoplete#sources#ternjs#sort = 0
+
+" When disabled, only the text before the given position is considered part of 
+" the word. When enabled (the default), the whole variable name that the cursor
+" is on will be included. Default: 1
+let g:deoplete#sources#ternjs#expand_word_forward = 0
+
+" Whether to ignore the properties of Object.prototype unless they have been 
+" spelled out by at least two characters. Default: 1
+let g:deoplete#sources#ternjs#omit_object_prototype = 0
+
+" Whether to include JavaScript keywords when completing something that is not 
+" a property. Default: 0
+let g:deoplete#sources#ternjs#include_keywords = 1
+
+" If completions should be returned when inside a literal. Default: 1
+let g:deoplete#sources#ternjs#in_literal = 0
+
+"Add extra filetypes
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ ]
 
 " Multi select
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
-" fzf
-nnoremap <F12> :Files<CR>
+" Autoformat
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_javascript_prettier = {
+    \ 'exe': 'prettier',
+    \ 'args': [
+    \   '--stdin',
+    \   '--single-quote',
+    \   '--no-semi',
+    \   '--no-bracket-spacing'
+    \ ],
+    \ 'stdin': 1,
+    \ }
 
-" bind \ (backward slash) to grep shortcut
-nnoremap \ :Ag<SPACE>
+" Auto close tag
+let g:closetag_filenames = '*.html,*.js'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:jsx_ext_required = 0
 
+" Indentation
+let g:indentLine_char = '│'
 
-" Formats file automatically on save
-" autocmd BufWritePre Neoformat
-nnoremap <Leader>f :Neoformat<CR>
+" Ale
+let g:ale_linters = {'javascript': ['eslint'], 'haskell': ['hlint']}
 
-" Execute command in tmux
-nnoremap = :VimuxPromptCommand<CR>
-
-" Vim JavaScript
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-
-" Flow
-nnoremap ] :FlowJumpToDef<CR>
-
-let g:flow#enable = 0
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif

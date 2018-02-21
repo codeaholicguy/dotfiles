@@ -10,174 +10,130 @@ function is_installed {
   echo "$return_"
 }
 
-# Handle options
+function install_macos {
+  if [[ $OSTYPE != darwin* ]]; then
+    return
+  fi
+  echo "MacOS detected"
+  xcode-select --install
+
+  if [ "$(is_installed brew)" == "0" ]; then
+    echo "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  echo "Installing iTerm2"
+  brew tap caskroom/cask
+  brew cask install iterm2
+
+  if [ "$(is_installed zsh)" == "0" ]; then
+    echo "Installing zsh"
+    brew install zsh zsh-completions
+    echo "Installing oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  fi
+
+  if [ "$(is_installed ag)" == "0" ]; then
+    echo "Installing The silver searcher"
+    brew install the_silver_searcher
+  fi
+
+  if [ "$(is_installed fzf)" == "0" ]; then
+    echo "Installing fzf"
+    brew install fzf
+  fi
+
+  if [ "$(is_installed tmux)" == "0" ]; then
+    echo "Installing tmux"
+    brew install tmux
+    echo "Installing reattach-to-user-namespace"
+    brew install reattach-to-user-namespace
+  fi
+
+  if [ "$(is_installed git)" == "0" ]; then
+    echo "Installing Git"
+    brew install git
+  fi
+
+  if [ "$(is_installed node)" == "0" ]; then
+    echo "Installing Node"
+    brew install node
+  fi
+
+  if [ "$(is_installed python3)" == "0" ]; then
+    echo "Installing python3"
+    brew install python3
+  fi
+
+  if [ "$(is_installed nvim)" == "0" ]; then
+    echo "Install neovim"
+    brew install neovim
+    if [ "$(is_installed pip3)" == "1" ]; then
+      pip3 install neovim --upgrade
+    fi
+  fi
+}
+
+# Install ternjs for vim
+function backup {
+  echo "Backing up dotfiles"
+  local current_date = $(date +%s)
+  local backup_dir = dotfiles_$current_date
+
+  mv ~/.zshrc ~/$backup_dir/.zshrc
+  mv ~/.tmux.conf ~/$backup_dir/.tmux.conf
+  mv ~/.vim ~/$backup_dir/.vim
+  mv ~/.vimrc ~/$backup_dir/.vimrc
+  mv ~/.vimrc.bundles ~/$backup_dir/.vimrc.bundles
+}
+
+function link_dotfiles {
+  echo "Linking dotfiles"
+  ln -s zshrc ~/.zshrc
+  ln -s tmux.conf ~/.tmux.conf
+  ln -s vim ~/.vim
+  ln -s vimrc ~/.vimrc
+  ln -s vimrc.bundles ~/.vimrc.bundles
+
+  if [ "$(is_installed nvim)" == "1" ]; then
+    rm -rf $HOME/.config/nvim
+    mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+    ln -s vim $XDG_CONFIG_HOME/nvim
+    ln -s vimrc $XDG_CONFIG_HOME/nvim/init.vim
+  fi
+
+  echo "Installing zsh-autosuggestions"
+  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  echo "Installing vim-plug"
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  if [ "$(is_installed npm)" == "1" ]; then
+    echo "Installing ternjs for autocomplete javascript in vim/nvim"
+    npm install -g tern
+  fi
+}
+
 while test $# -gt 0; do 
   case "$1" in
     --help)
       echo "Help"
       exit
       ;;
+    --macos)
+      install_macos
+      backup
+      link_dotfiles
+      exit
+      ;;
+    --backup)
+      backup
+      exit
+      ;;
+    --dotfiles)
+      link_dotfiles
+      exit
+      ;;
   esac
 
   shift
 done
-
-# Install brew if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed brew)" == "0" ]; then
-    echo "MacOS detected"
-    xcode-select --install
-    echo "Homebrew is not installed, installing"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-fi
-
-# Install zsh if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed brew)" == "1" ]; then
-    echo "MacOS detected"
-    echo "Installing iTerm2"
-    brew tap caskroom/cask
-    brew cask install iterm2
-  fi
-fi
-
-# Install zsh if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed zsh)" == "0" ]; then
-    echo "MacOS detected"
-    echo "ZSH is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install zsh zsh-completions
-      echo "Installing Oh My Zsh"
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-  fi
-fi
-
-# Install the silver searcher if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed ag)" == "0" ]; then
-    echo "MacOS detected"
-    echo "The silver searcher is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install the_silver_searcher
-    fi
-  fi
-fi
-
-# Install fzf if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed fzf)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Fzf is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install fzf
-    fi
-  fi
-fi
-
-# Install tmux if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed tmux)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Tmux is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install tmux
-    fi
-  fi
-fi
-
-# Backup if any
-echo "Backing up old dotfiles if any"
-mv ~/.zshrc ~/.zshrc.$(date +%s)
-mv ~/.tmux.conf ~/.tmux.conf.$(date +%s)
-mv ~/.vim ~/.vim.$(date +%s)
-mv ~/.vimrc ~/.vimrc.$(date +%s)
-mv ~/.vimrc.bundles ~/.vimrc.bundles.$(date +%s)
-
-# Copy files
-echo "Copying dotfiles"
-cp zshrc ~/.zshrc
-cp tmux.conf ~/.tmux.conf
-mkdir ~/.vim
-cp -R vim/* ~/.vim/
-cp vimrc ~/.vimrc
-cp vimrc.bundles ~/.vimrc.bundles
-
-# Install node if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed node)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Node is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install node
-    fi
-  fi
-fi
-
-# Install node if any
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed git)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Git is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install git
-    fi
-  fi
-fi
-
-# Install ternjs for vim
-if [ "$(is_installed npm)" == "1" ]; then
-  echo "Installing ternjs for autocomplete javascript in vim/nvim"
-  npm install -g tern
-fi
-
-# Update formular for copying in vim
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed brew)" == "1" ]; then
-    echo "Installing brew formula reattach-to-user-namespace for copying in vim with tmux"
-    brew install reattach-to-user-namespace
-  fi
-fi
-
-# Install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Install neovim
-if [[ $OSTYPE == darwin* ]]; then
-  if [ "$(is_installed python3)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Python3 is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install python3
-    fi
-  fi
-
-  if [ "$(is_installed nvim)" == "0" ]; then
-    echo "MacOS detected"
-    echo "Neovim is not installed, installing"
-    if [ "$(is_installed brew)" == "1" ]; then
-      brew install neovim/neovim/neovim
-      # Install dotfiles for nvim
-      echo "Copying file for neovim"
-      mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-      ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-      ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
-    fi
-  fi
-
-  pip3 install neovim --upgrade
-fi
-
-if [ "$(is_installed nvim)" == "1" ]; then
-  # Install dotfiles for nvim
-  echo "Copying file for neovim"
-  mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-  ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-  ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
-fi
-
-# Auto suggestion for zsh
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions

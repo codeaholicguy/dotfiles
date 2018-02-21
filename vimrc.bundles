@@ -1,34 +1,14 @@
-" Shim command and function to allow migration from Vundle to vim-plug.
-function! VundleToPlug(vundle_command, arg, ...)
-  echom "You are using Vundle's `".a:vundle_command."` command to declare plugins. Dotfiles now uses vim-plug for plugin management. Please rename uses of `".a:vundle_command."` to `Plug`. Plugin was '".a:arg."'."
-  let vim_plug_options = {}
-
-  if a:0 > 0
-    if has_key(a:1, 'name')
-      let name = a:1.name
-      let vim_plug_options.dir = "$HOME/.vim/bundle/".a:1.name
-    endif
-
-    if has_key(a:1, 'rtp')
-      let vim_plug_options.rtp = a:1.rtp
-    endif
-  endif
-
-  Plug a:arg, vim_plug_options
-endfunction
-
-com! -nargs=+  -bar Plugin call VundleToPlug("Plugin", <args>)
-com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
-
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
+Plug 'ervandew/supertab'
+Plug 'Yggdroot/indentLine'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -40,36 +20,26 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 Plug 'sbdchd/neoformat'
 
-Plug 'ervandew/supertab'
-
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'tpope/vim-surround'
 
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'fatih/vim-go'
-
-Plug 'pangloss/vim-javascript'
-
 Plug 'sheerun/vim-polyglot'
-
-Plug 'flowtype/vim-flow'
-
-Plug 'benmills/vimux'
+Plug 'plasticboy/vim-markdown'
+Plug 'neovimhaskell/haskell-vim'
 
 Plug 'dracula/vim'
 
-Plug 'benmills/vimux'
-
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-
 call plug#end()
+
+" Local config
+if filereadable($HOME . "/.vimrc.bundles.local")
+  source ~/.vimrc.bundles.local
+endif

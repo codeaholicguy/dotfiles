@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/$(whoami)/.oh-my-zsh
+export ZSH=/Users/hoangnn/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dracula"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,6 +85,7 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
+alias reload='source ~/.zshrc'
 
 export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_color%} [$(whoami)] %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
 
@@ -93,3 +94,5 @@ export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_co
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+source ~/.zshrc.local
