@@ -74,7 +74,6 @@ function install_macos {
   fi
 }
 
-# Install ternjs for vim
 function backup {
   echo "Backing up dotfiles"
   local current_date = $(date +%s)
