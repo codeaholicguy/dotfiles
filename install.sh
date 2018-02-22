@@ -50,6 +50,8 @@ function install_macos {
     brew install tmux
     echo "Installing reattach-to-user-namespace"
     brew install reattach-to-user-namespace
+    echo "Installing tmux-plugin-manager"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 
   if [ "$(is_installed git)" == "0" ]; then
