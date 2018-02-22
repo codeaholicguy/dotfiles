@@ -74,6 +74,11 @@ function install_macos {
       pip3 install neovim --upgrade
     fi
   fi
+
+  if [ "$(is_installed tmuxinator)" == "0" ]; then
+    echo "Install tmuxinator"
+    gem install tmuxinator
+  fi
 }
 
 function backup {
