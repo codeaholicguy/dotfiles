@@ -101,7 +101,7 @@ nnoremap <Leader>/ :split<CR>
 nnoremap <Leader>w :w<CR>
 
 " Remove highlight
-map <F3> :nohl<CR>
+map <C-h> :nohl<CR>
 
 " NERD tree configuration
 noremap <C-d> :NERDTreeToggle<CR>
