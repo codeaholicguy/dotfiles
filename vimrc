@@ -148,7 +148,7 @@ let g:lightline = {
 " Autocomplete using deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#ternjs#timeout = 1
+" let g:deoplete#sources#ternjs#timeout = 1
 
 " Whether to include the types of the completions in the result data. Default: 0
 let g:deoplete#sources#ternjs#types = 1
