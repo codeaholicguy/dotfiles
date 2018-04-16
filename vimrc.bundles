@@ -34,6 +34,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'dracula/vim'
 

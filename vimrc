@@ -125,7 +125,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'Dracula',
+      \ 'colorscheme': 'darcula',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
