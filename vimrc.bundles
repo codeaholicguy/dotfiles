@@ -31,10 +31,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'editorconfig/editorconfig-vim'
 
 Plug 'dracula/vim'
 
