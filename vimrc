@@ -232,8 +232,9 @@ let g:neoformat_javascript_prettier = {
     \ 'args': [
     \   '--stdin',
     \   '--single-quote',
-    \   '--no-semi',
-    \   '--no-bracket-spacing'
+    \   '--no-bracket-spacing',
+    \   '--jsx-bracket-same-line',
+    \   '--arrow-parens always'
     \ ],
     \ 'stdin': 1,
     \ }

@@ -62,6 +62,9 @@ function install_macos {
   if [ "$(is_installed node)" == "0" ]; then
     echo "Installing Node"
     brew install node
+
+    echo "Installing Yarn"
+    brew install yarn
   fi
 
   if [ "$(is_installed python3)" == "0" ]; then
@@ -122,7 +125,13 @@ function link_dotfiles {
   if [ "$(is_installed npm)" == "1" ]; then
     echo "Installing ternjs for autocomplete javascript in vim/nvim"
     npm install -g tern
+
+    echo "Installing prettier"
+    npm install -g prettier
   fi
+
+  zsh
+  source ~/.zshrc
 }
 
 while test $# -gt 0; do 
