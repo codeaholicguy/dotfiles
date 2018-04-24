@@ -119,6 +119,8 @@ nnoremap \ :Ag<SPACE>
 " autocmd BufWritePre Neoformat
 nnoremap <Leader>f :Neoformat<CR>
 
+nnoremap F :NERDTreeFind<CR>
+
 " Python support
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -240,7 +242,7 @@ let g:neoformat_javascript_prettier = {
     \ }
 
 " Auto close tag
-let g:closetag_filenames = '*.html,*.js'
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:jsx_ext_required = 0
 
