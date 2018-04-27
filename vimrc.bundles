@@ -16,8 +16,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'ternjs/tern_for_vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
+Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
 
 Plug 'sbdchd/neoformat'
 
