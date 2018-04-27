@@ -17,6 +17,7 @@ Plug 'ternjs/tern_for_vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
 
 Plug 'sbdchd/neoformat'
 
@@ -30,6 +31,9 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
