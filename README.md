@@ -12,9 +12,15 @@ Clone onto your machine:
 
 Simply run file (maybe you  must run `chmod +x ./install.sh` before run that file):
 
-    ./install.sh
-
+    ./install.sh --macos
+    
 In `vim/neovim` run:
+
+    :PlugClean
+
+And follow its steps.
+
+After, in `vim/neovim` run:
 
     :PlugInstall
 
