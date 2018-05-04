@@ -142,7 +142,9 @@ while test $# -gt 0; do
       ;;
     --macos)
       install_macos
+      sleep 10
       backup
+      sleep 10
       link_dotfiles
       exit
       ;;
