@@ -146,6 +146,12 @@ while test $# -gt 0; do
       backup
       sleep 10
       link_dotfiles
+      sleep 10
+      install_macos
+      sleep 10
+      backup
+      sleep 10
+      link_dotfiles
       exit
       ;;
     --backup)
