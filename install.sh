@@ -109,13 +109,13 @@ function link_dotfiles {
   ln -s $(pwd)/vimrc ~/.vimrc
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
-  if [ "$(is_installed nvim)" == "1" ]; then
-    rm -rf $HOME/.config/nvim/init.vim
-    rm -rf $HOME/.config/nvim
-    mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-    ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
-    ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
-  fi
+  rm -rf $HOME/.config/nvim/init.vim
+  rm -rf $HOME/.config/nvim
+  mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+  ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
+  ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   if [ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
     echo "Installing zsh-autosuggestions"
@@ -141,12 +141,6 @@ while test $# -gt 0; do
       exit
       ;;
     --macos)
-      install_macos
-      sleep 10
-      backup
-      sleep 10
-      link_dotfiles
-      sleep 10
       install_macos
       sleep 10
       backup

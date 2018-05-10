@@ -251,8 +251,6 @@ let g:indentLine_char = '│'
 
 " Ale
 let g:ale_linters = {'javascript': ['eslint'], 'haskell': ['hlint']}
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
 
 " fzf.vim
 " Customize fzf colors to match your color scheme
@@ -270,6 +268,10 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" Polygot
+let g:polyglot_disabled = ['graphql']
+let g:vim_markdown_folding_disabled = 1
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
