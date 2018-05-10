@@ -148,6 +148,8 @@ let g:lightline = {
       \ }
 
 " Autocomplete using deoplete
+set completeopt-=preview
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 " let g:deoplete#sources#ternjs#timeout = 1
@@ -270,7 +272,6 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " Polygot
-let g:polyglot_disabled = ['graphql']
 let g:vim_markdown_folding_disabled = 1
 
 " Local config
