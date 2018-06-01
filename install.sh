@@ -109,6 +109,10 @@ function link_dotfiles {
   ln -s $(pwd)/vimrc ~/.vimrc
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
+  sleep 10
+  zsh
+  source ~/.zshrc
+
   rm -rf $HOME/.config/nvim/init.vim
   rm -rf $HOME/.config/nvim
   mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
@@ -122,16 +126,21 @@ function link_dotfiles {
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
   fi
 
+  reload
+
   if [ "$(is_installed npm)" == "1" ]; then
     echo "Installing ternjs for autocomplete javascript in vim/nvim"
     npm install -g tern
 
     echo "Installing prettier"
     npm install -g prettier
-  fi
 
-  zsh
-  source ~/.zshrc
+    echo "Installing importjs"
+    npm install -g import-js
+
+    echo "Installing flow-bin"
+    npm install -g flow-bin
+  fi
 }
 
 while test $# -gt 0; do 

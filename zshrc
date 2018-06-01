@@ -86,6 +86,7 @@ export EDITOR='nvim'
 alias vim="nvim"
 alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
 alias reload='source ~/.zshrc'
+alias glog='git log --graph --oneline --decorate --all'
 
 export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_color%} [$(whoami)] %{$fg_bold[blue]%}%c $(git_prompt_info)% %{$reset_color%}'
 

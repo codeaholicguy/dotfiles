@@ -253,6 +253,9 @@ let g:indentLine_char = '│'
 
 " Ale
 let g:ale_linters = {'javascript': ['eslint'], 'haskell': ['hlint']}
+let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0
+let g:ale_keep_list_window_open = 0
 
 " fzf.vim
 " Customize fzf colors to match your color scheme

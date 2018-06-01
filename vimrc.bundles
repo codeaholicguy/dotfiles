@@ -21,9 +21,14 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
 Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
 
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+
 Plug 'sbdchd/neoformat'
 
 Plug 'w0rp/ale'
+
+Plug 'easymotion/vim-easymotion'
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
