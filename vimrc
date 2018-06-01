@@ -105,6 +105,7 @@ map <C-h> :nohl<CR>
 
 " NERD tree configuration
 noremap <C-d> :NERDTreeToggle<CR>
+nnoremap F :NERDTreeFind<CR>
 
 " fzf
 noremap ` :Files<CR>
@@ -118,8 +119,6 @@ nnoremap \ :Ag<SPACE>
 " Formats file automatically on save
 " autocmd BufWritePre Neoformat
 nnoremap <Leader>f :Neoformat<CR>
-
-nnoremap F :NERDTreeFind<CR>
 
 " Easymotion
 " s{char}{char} to move to {char}{char} over windows
