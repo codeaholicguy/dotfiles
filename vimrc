@@ -122,6 +122,7 @@ nnoremap <Leader>f :Neoformat<CR>
 nnoremap F :NERDTreeFind<CR>
 
 " Easymotion
+
 " s{char}{char} to move to {char}{char} over windows
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 " Move to line over windows
