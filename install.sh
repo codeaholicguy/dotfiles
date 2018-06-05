@@ -113,20 +113,20 @@ function link_dotfiles {
   zsh
   source ~/.zshrc
 
-  rm -rf $HOME/.config/nvim/init.vim
-  rm -rf $HOME/.config/nvim
-  mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-  ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
-  ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
-
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
   if [ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
     echo "Installing zsh-autosuggestions"
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
   fi
 
   reload
+
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  rm -rf $HOME/.config/nvim/init.vim
+  rm -rf $HOME/.config/nvim
+  mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+  ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
+  ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
   if [ "$(is_installed npm)" == "1" ]; then
     echo "Installing ternjs for autocomplete javascript in vim/nvim"
