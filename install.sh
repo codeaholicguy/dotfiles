@@ -84,6 +84,26 @@ function install_macos {
     echo "Install tmuxinator"
     gem install tmuxinator
   fi
+
+  if [ "$(is_installed go)" == "0" ]; then
+    echo "Install go"
+    brew install go
+  fi
+
+  if [ "$(is_installed ngrok)" == "0" ]; then
+    echo "Install ngrok"
+    brew cask install ngrok
+  fi
+
+  if [ "$(is_installed ghci)" == "0" ]; then
+    echo "Install ngrok"
+    brew cask install haskell-platform
+  fi
+
+  if [ "$(is_installed java)" == "0" ]; then
+    echo "Install ngrok"
+    brew cask install java8
+  fi
 }
 
 function backup {
@@ -121,6 +141,10 @@ function link_dotfiles {
   mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
   ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
   ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
+  if [ "$(is_installed npm)" == "1" ]; then
+    go get golang.org/x/tools/cmd/godoc
+  fi
 
   if [ "$(is_installed npm)" == "1" ]; then
     echo "Installing ternjs for autocomplete javascript in vim/nvim"

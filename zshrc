@@ -96,6 +96,13 @@ export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_co
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+# Yarn
 export PATH="$PATH:$(yarn global bin)"
+
+# Go
+export GOPATH=$HOME/Go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 source ~/.zshrc.local
