@@ -242,6 +242,8 @@ let g:neoformat_javascript_prettier = {
     \ 'exe': 'prettier',
     \ 'args': [
     \   '--stdin',
+    \   '--stdin-filepath', 
+    \   '%:p',
     \   '--single-quote',
     \   '--no-bracket-spacing',
     \   '--jsx-bracket-same-line',
