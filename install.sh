@@ -109,16 +109,10 @@ function link_dotfiles {
   ln -s $(pwd)/vimrc ~/.vimrc
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
-  sleep 10
-  zsh
-  source ~/.zshrc
-
   if [ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
     echo "Installing zsh-autosuggestions"
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
   fi
-
-  reload
 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -151,10 +145,10 @@ while test $# -gt 0; do
       ;;
     --macos)
       install_macos
-      sleep 10
       backup
-      sleep 10
       link_dotfiles
+      zsh
+      source ~/.zshrc
       exit
       ;;
     --backup)
