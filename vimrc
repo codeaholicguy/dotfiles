@@ -245,6 +245,7 @@ let g:neoformat_javascript_prettier = {
     \   '--stdin-filepath', 
     \   '%:p',
     \   '--single-quote',
+    \   '--no-semi',
     \   '--no-bracket-spacing',
     \   '--jsx-bracket-same-line',
     \   '--arrow-parens always'
