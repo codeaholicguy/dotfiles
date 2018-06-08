@@ -81,6 +81,12 @@ augroup vimrcEx
         \ endif
 augroup END
 
+" Go file config
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
@@ -155,11 +161,12 @@ let g:lightline = {
       \ }
 
 " Autocomplete using deoplete
-set completeopt-=preview
+" set completeopt-=preview
+set completeopt=longest,menuone " auto complete setting
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-" let g:deoplete#sources#ternjs#timeout = 1
+let g:deoplete#auto_complete_start_length = 1
 
 " Whether to include the types of the completions in the result data. Default: 0
 let g:deoplete#sources#ternjs#types = 1
@@ -286,6 +293,18 @@ let g:fzf_colors =
 
 " Polygot
 let g:vim_markdown_folding_disabled = 1
+
+" Go highlight
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+let g:go_fmt_command = "goimports"
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

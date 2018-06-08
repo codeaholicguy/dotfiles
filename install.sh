@@ -142,8 +142,9 @@ function link_dotfiles {
   ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
   ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
-  if [ "$(is_installed npm)" == "1" ]; then
+  if [ "$(is_installed go)" == "1" ]; then
     go get golang.org/x/tools/cmd/godoc
+    go get -u github.com/nsf/gocode
   fi
 
   if [ "$(is_installed npm)" == "1" ]; then

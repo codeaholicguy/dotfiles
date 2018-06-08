@@ -17,13 +17,6 @@ Plug 'ternjs/tern_for_vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
-Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
-
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-
 Plug 'sbdchd/neoformat'
 
 Plug 'w0rp/ale'
@@ -42,13 +35,24 @@ Plug 'junegunn/fzf.vim'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown'
-Plug 'neovimhaskell/haskell-vim'
-
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'dracula/vim'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
+Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
+
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+
+Plug 'plasticboy/vim-markdown'
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
