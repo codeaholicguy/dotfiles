@@ -159,6 +159,12 @@ function link_dotfiles {
 
     echo "Installing flow-bin"
     npm install -g flow-bin
+
+    echo "Installing typescript"
+    npm install -g typescript
+
+    echo "Installing neovim"
+    npm install -g neovim
   fi
 }
 

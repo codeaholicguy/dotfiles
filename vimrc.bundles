@@ -44,6 +44,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
 Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'

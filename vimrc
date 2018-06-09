@@ -245,7 +245,22 @@ let g:multi_cursor_skip_key='<C-x>'
 
 " Autoformat
 let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_javascript_prettier = {
+    \ 'exe': 'prettier',
+    \ 'args': [
+    \   '--stdin',
+    \   '--stdin-filepath', 
+    \   '%:p',
+    \   '--single-quote',
+    \   '--no-semi',
+    \   '--no-bracket-spacing',
+    \   '--jsx-bracket-same-line',
+    \   '--arrow-parens always'
+    \ ],
+    \ 'stdin': 1,
+    \ }
+let g:neoformat_typescript_prettier = {
     \ 'exe': 'prettier',
     \ 'args': [
     \   '--stdin',
