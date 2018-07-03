@@ -29,7 +29,7 @@ set textwidth=80
 set colorcolumn=+1
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+" set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -86,6 +86,10 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
+
+au BufRead,BufNewFile .babelrc setlocal filetype=json
+au BufRead,BufNewFile .eslintrc.json setlocal filetype=json
+au BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
