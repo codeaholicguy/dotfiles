@@ -31,8 +31,6 @@ function install_macos {
   if [ "$(is_installed zsh)" == "0" ]; then
     echo "Installing zsh"
     brew install zsh zsh-completions
-    echo "Installing oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   fi
 
   if [ "$(is_installed ag)" == "0" ]; then
@@ -129,6 +127,9 @@ function link_dotfiles {
   ln -s $(pwd)/vimrc ~/.vimrc
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
+  echo "Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
   if [ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
     echo "Installing zsh-autosuggestions"
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
@@ -165,6 +166,9 @@ function link_dotfiles {
 
     echo "Installing neovim"
     npm install -g neovim
+
+    echo "Installing eslint_d"
+    npm install -g eslint_d
   fi
 }
 

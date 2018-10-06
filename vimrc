@@ -87,8 +87,11 @@ au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
 
-au BufRead,BufNewFile .babelrc setlocal filetype=json
 au BufRead,BufNewFile .eslintrc.json setlocal filetype=json
+au BufRead,BufNewFile .babelrc setlocal filetype=json
+au BufRead,BufNewFile .prettierrc setlocal filetype=json
+
+au BufRead,BufNewFile .babelrc.js setlocal filetype=javascript
 au BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
@@ -116,6 +119,8 @@ map <C-h> :nohl<CR>
 " NERD tree configuration
 noremap <C-d> :NERDTreeToggle<CR>
 nnoremap F :NERDTreeFind<CR>
+
+let NERDTreeShowHidden=1
 
 " fzf
 noremap ` :Files<CR>
@@ -248,8 +253,10 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
 " Autoformat
-let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_javascript = ['prettier', 'eslint_d']
 let g:neoformat_enabled_typescript = ['prettier']
+let g:neoformat_run_all_formatters = 1
+
 let g:neoformat_javascript_prettier = {
     \ 'exe': 'prettier',
     \ 'args': [
@@ -259,7 +266,6 @@ let g:neoformat_javascript_prettier = {
     \   '--single-quote',
     \   '--no-semi',
     \   '--no-bracket-spacing',
-    \   '--jsx-bracket-same-line',
     \   '--arrow-parens always'
     \ ],
     \ 'stdin': 1,
@@ -273,7 +279,6 @@ let g:neoformat_typescript_prettier = {
     \   '--single-quote',
     \   '--no-semi',
     \   '--no-bracket-spacing',
-    \   '--jsx-bracket-same-line',
     \   '--arrow-parens always'
     \ ],
     \ 'stdin': 1,
