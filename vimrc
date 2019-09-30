@@ -254,9 +254,23 @@ let g:multi_cursor_skip_key='<C-x>'
 
 " Autoformat
 let g:neoformat_enabled_javascript = ['prettier', 'eslint_d']
+let g:neoformat_enabled_vue = ['prettier', 'eslint_d']
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_run_all_formatters = 1
 
+let g:neoformat_vue_prettier = {
+    \ 'exe': 'prettier',
+    \ 'args': [
+    \   '--stdin',
+    \   '--stdin-filepath', 
+    \   '%:p',
+    \   '--single-quote',
+    \   '--no-semi',
+    \   '--no-bracket-spacing',
+    \   '--trailing-comma es5'
+    \ ],
+    \ 'stdin': 1,
+    \ }
 let g:neoformat_javascript_prettier = {
     \ 'exe': 'prettier',
     \ 'args': [
@@ -294,9 +308,11 @@ let g:indentLine_char = '│'
 
 " Ale
 let g:ale_linters = {'javascript': ['eslint'], 'haskell': ['hlint']}
+let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
 let g:ale_keep_list_window_open = 0
+let g:ale_javascript_eslint_suppress_missing_config = 1
 
 " fzf.vim
 " Customize fzf colors to match your color scheme
