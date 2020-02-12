@@ -132,7 +132,7 @@ nnoremap \ :Ag<SPACE>
 
 " coc.vim config
 " Remap keys for gotos
-nmap <silent> G <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
