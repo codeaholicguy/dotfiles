@@ -2,38 +2,25 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
 
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag'
 Plug 'ervandew/supertab'
-Plug 'Yggdroot/indentLine'
+
+Plug 'tpope/vim-surround'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-Plug 'ternjs/tern_for_vim'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'sbdchd/neoformat'
-
-Plug 'w0rp/ale'
-
 Plug 'easymotion/vim-easymotion'
 
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -41,19 +28,7 @@ Plug 'dracula/vim'
 
 Plug 'sheerun/vim-polyglot'
 
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'galooshi/vim-import-js', {'do': 'npm install -g import-js'}
-Plug 'flowtype/vim-flow', {'do': 'npm install -g flow-bin'}
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
-
-Plug 'plasticboy/vim-markdown'
-Plug 'neovimhaskell/haskell-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 

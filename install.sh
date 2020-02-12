@@ -60,14 +60,6 @@ function install_macos {
   if [ "$(is_installed node)" == "0" ]; then
     echo "Installing Node"
     brew install node
-
-    echo "Installing Yarn"
-    brew install yarn
-  fi
-
-  if [ "$(is_installed python3)" == "0" ]; then
-    echo "Installing python3"
-    brew install python3
   fi
 
   if [ "$(is_installed nvim)" == "0" ]; then
@@ -76,31 +68,6 @@ function install_macos {
     if [ "$(is_installed pip3)" == "1" ]; then
       pip3 install neovim --upgrade
     fi
-  fi
-
-  if [ "$(is_installed tmuxinator)" == "0" ]; then
-    echo "Install tmuxinator"
-    gem install tmuxinator
-  fi
-
-  if [ "$(is_installed go)" == "0" ]; then
-    echo "Install go"
-    brew install go
-  fi
-
-  if [ "$(is_installed ngrok)" == "0" ]; then
-    echo "Install ngrok"
-    brew cask install ngrok
-  fi
-
-  if [ "$(is_installed ghci)" == "0" ]; then
-    echo "Install ngrok"
-    brew cask install haskell-platform
-  fi
-
-  if [ "$(is_installed java)" == "0" ]; then
-    echo "Install ngrok"
-    brew cask install java8
   fi
 }
 
@@ -142,34 +109,6 @@ function link_dotfiles {
   mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
   ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
   ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
-
-  if [ "$(is_installed go)" == "1" ]; then
-    go get golang.org/x/tools/cmd/godoc
-    go get -u github.com/nsf/gocode
-  fi
-
-  if [ "$(is_installed npm)" == "1" ]; then
-    echo "Installing ternjs for autocomplete javascript in vim/nvim"
-    npm install -g tern
-
-    echo "Installing prettier"
-    npm install -g prettier
-
-    echo "Installing importjs"
-    npm install -g import-js
-
-    echo "Installing flow-bin"
-    npm install -g flow-bin
-
-    echo "Installing typescript"
-    npm install -g typescript
-
-    echo "Installing neovim"
-    npm install -g neovim
-
-    echo "Installing eslint_d"
-    npm install -g eslint_d
-  fi
 }
 
 while test $# -gt 0; do 
