@@ -94,6 +94,7 @@ au BufRead,BufNewFile .prettierrc setlocal filetype=json
 
 au BufRead,BufNewFile .babelrc.js setlocal filetype=javascript
 au BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
+au BufRead,BufNewFile *.hbs setlocal filetype=html
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
