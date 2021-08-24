@@ -19,6 +19,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'modille/groovy.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 

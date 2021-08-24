@@ -1,3 +1,4 @@
 {
-  "tsserver.implicitProjectConfig.experimentalDecorators": true
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "snippets.ultisnips.usePythonx": false
 }
