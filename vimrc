@@ -113,6 +113,11 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>\ :vsplit<CR>
 nnoremap <Leader>/ :split<CR>
 
+nmap = :res +2<CR> " increase pane by 2 
+nmap - :res -2<CR> " decrease pane by 2
+nmap ] :vertical res +2<CR> " vertical increase pane by 2
+nmap [ :vertical res -2<CR> " vertical decrease pane by 2
+
 " Remove highlight
 map <C-h> :nohl<CR>
 

@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'modille/groovy.vim'
 Plug 'mattn/emmet-vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 call plug#end()
 
