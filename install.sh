@@ -71,6 +71,11 @@ function install_macos {
     brew install git
   fi
 
+  if [ "$(is_installed gh)" == "0" ]; then
+    echo "Installing Github CLI"
+    brew install gh
+  fi
+
   if [ "$(is_installed nvim)" == "0" ]; then
     echo "Install neovim"
     brew install neovim
