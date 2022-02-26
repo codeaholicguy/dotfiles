@@ -15,10 +15,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'modille/groovy.vim'
+Plug 'mattn/emmet-vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 call plug#end()
 
