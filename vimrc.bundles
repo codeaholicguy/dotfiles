@@ -2,8 +2,6 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
@@ -16,9 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dracula/vim'
 Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'modille/groovy.vim'
 Plug 'mattn/emmet-vim'
 Plug 'dart-lang/dart-vim-plugin'
 
