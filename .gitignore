@@ -2,3 +2,5 @@ dist
 build
 vim/bundle
 .DS_Store
+vim/vim
+vim/init.vim
