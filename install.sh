@@ -82,8 +82,6 @@ function install_macos {
     if [ "$(is_installed pip3)" == "1" ]; then
       pip3 install neovim --upgrade
     fi
-
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 }
 
@@ -109,16 +107,22 @@ function link_dotfiles {
 
   echo "Linking dotfiles"
   ln -s $(pwd)/zshrc ~/.zshrc
+  ln -s $(pwd)/schemes/dracula.zsh-theme $HOME/.oh-my-zsh/themes/dracula.zsh-theme
+
   ln -s $(pwd)/tmux.conf ~/.tmux.conf
-  ln -s $(pwd)/vim ~/.vim
-  ln -s $(pwd)/vimrc ~/.vimrc
+
+  echo "Creating vim symlinks"
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  ln -s $(pwd)/vim/colors $HOME/.vim/colors
+  ln -s $(pwd)/vim/coc-settings.json $HOME/.vim/coc-settings.json
+  ln -s $(pwd)/vimrc $HOME/.vimrc
+  ln -s $(pwd)/vimrc $HOME/.vim/init.vim
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
 
   mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
-  ln -s $(pwd)/vim $XDG_CONFIG_HOME/nvim
-  ln -s $(pwd)/vimrc $XDG_CONFIG_HOME/nvim/init.vim
-  ln -s $(pwd)/schemes/dracula.zsh-theme $HOME/.oh-my-zsh/themes/dracula.zsh-theme
+  ln -s $HOME/.vim $XDG_CONFIG_HOME/nvim
 
   if [[ ! -f ~/.zshrc.local ]]; then
     echo "Creating .zshrc.local"
