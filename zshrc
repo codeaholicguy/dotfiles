@@ -118,4 +118,16 @@ export PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[pink]%}%D{%T}%{$reset_co
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+nosync() {
+  [[ $# -eq 0 ]] && set -- "node_modules" ".git"
+    
+  for arg in "$@"; do
+    xattr -w 'com.apple.fileprovider.ignore#P' 1 "$arg"
+  done
+}
+
 source ~/.zshrc.local

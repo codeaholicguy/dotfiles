@@ -1,3 +1,4 @@
 dist
 build
-vim/bundle/*
+vim/bundle
+.DS_Store

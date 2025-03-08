@@ -104,15 +104,15 @@ function backup {
 function link_dotfiles {
   echo "Linking dotfiles"
 
+  rm -rf $HOME/.config/nvim/init.vim
+  rm -rf $HOME/.config/nvim
+  rm -rf $HOME/.vim/bundle/*
+
   ln -s $(pwd)/zshrc ~/.zshrc
   ln -s $(pwd)/tmux.conf ~/.tmux.conf
   ln -s $(pwd)/vim ~/.vim
   ln -s $(pwd)/vimrc ~/.vimrc
   ln -s $(pwd)/vimrc.bundles ~/.vimrc.bundles
-
-  rm -rf $HOME/.config/nvim/init.vim
-  rm -rf $HOME/.config/nvim
-  rm -rf $HOME/.vim/bundle/*
 
   mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
@@ -126,6 +126,19 @@ function link_dotfiles {
   fi
 }
 
+function post_install {
+  echo "Post install"
+  echo "Installing vim plugins"
+  nvim +PlugClean +PlugInstall +qall
+
+  echo "Install nvm"
+  if [ "$(is_installed nvm)" == "0" ]; then
+    echo "Installing nvm"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    echo "Please run 'nvm install --lts' to install the latest LTS version of Node.js"
+  fi
+}
+
 while test $# -gt 0; do 
   case "$1" in
     --help)
@@ -136,6 +149,7 @@ while test $# -gt 0; do
       install_macos
       backup
       link_dotfiles
+      post_install
       zsh
       source ~/.zshrc
       exit

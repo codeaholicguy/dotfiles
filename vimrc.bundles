@@ -17,6 +17,7 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
