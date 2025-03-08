@@ -102,12 +102,12 @@ function backup {
 }
 
 function link_dotfiles {
-  echo "Linking dotfiles"
-
+  echo "Removing existing config"
   rm -rf $HOME/.config/nvim/init.vim
   rm -rf $HOME/.config/nvim
   rm -rf $HOME/.vim/bundle/*
 
+  echo "Linking dotfiles"
   ln -s $(pwd)/zshrc ~/.zshrc
   ln -s $(pwd)/tmux.conf ~/.tmux.conf
   ln -s $(pwd)/vim ~/.vim
@@ -129,7 +129,10 @@ function link_dotfiles {
 function post_install {
   echo "Post install"
   echo "Installing vim plugins"
-  nvim +PlugClean +PlugInstall +qall
+  vim +PlugClean +PlugInstall
+
+  echo "Installing coc plugins"
+  vim +"CocInstall coc-json coc-tsserver coc-html coc-css coc-yaml coc-python coc-clangd coc-cmake coc-deno coc-docker coc-eslint coc-flutter coc-fzf-preview coc-git coc-go coc-graphql coc-highlight coc-pairs coc-prettier coc-rust-analyzer coc-snippets coc-sql coc-tailwindcss"
 
   echo "Install nvm"
   if [ "$(is_installed nvm)" == "0" ]; then

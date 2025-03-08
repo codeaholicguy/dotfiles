@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "coc-clangd": ">=0.24.0",
+    "coc-clangd": ">=1.24.0",
     "coc-cmake": ">=0.2.1",
     "coc-css": ">=1.3.0",
-    "coc-deno": ">=3.9.5",
+    "coc-deno": ">=4.9.5",
     "coc-docker": ">=0.5.0",
     "coc-eslint": ">=1.5.8",
     "coc-flutter": ">=1.9.8",
