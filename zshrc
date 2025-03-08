@@ -123,7 +123,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 nosync() {
-  [[ $# -eq 0 ]] && set -- "node_modules" ".git"
+  [[ $# -eq 0 ]] && set -- "node_modules"
     
   for arg in "$@"; do
     xattr -w 'com.apple.fileprovider.ignore#P' 1 "$arg"
