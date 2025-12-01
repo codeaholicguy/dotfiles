@@ -119,8 +119,30 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Lazy load NVM - only load when nvm/node/npm/npx is called
+nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
+
+node() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  node "$@"
+}
+
+npm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  npm "$@"
+}
+
+npx() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  npx "$@"
+}
 
 nosync() {
   [[ $# -eq 0 ]] && set -- "node_modules"
@@ -129,5 +151,27 @@ nosync() {
     xattr -w 'com.apple.fileprovider.ignore#P' 1 "$arg"
   done
 }
+
+# Lazy load jenv
+#jenv() {
+#  unset -f jenv
+#  eval "$(command jenv init -)"
+#  jenv "$@"
+#}
+#
+# Lazy load pyenv
+#pyenv() {
+#  unset -f pyenv
+#  eval "$(command pyenv init --path)"
+#  eval "$(command pyenv init -)"
+#  pyenv "$@"
+#}
+#
+#python() {
+#  unset -f pyenv python
+#  eval "$(command pyenv init --path)"
+#  eval "$(command pyenv init -)"
+#  python "$@"
+#}
 
 source ~/.zshrc.local
