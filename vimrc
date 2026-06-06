@@ -190,6 +190,9 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Search n-chars
 map / <Plug>(easymotion-sn)
 
+nmap <Leader>d :DiffviewOpen<CR>
+nmap <Leader>D :DiffviewClose<CR>
+
 " Lightline
 let g:lightline = {
       \ 'colorscheme': 'darcula',

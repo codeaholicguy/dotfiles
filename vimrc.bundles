@@ -18,6 +18,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'github/copilot.vim'
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
