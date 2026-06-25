@@ -61,7 +61,9 @@ set background=dark
 
 set rtp+=/opt/homebrew/opt/fzf
 
-colorscheme dracula
+if filereadable($HOME . "/.vimrc.theme")
+  source ~/.vimrc.theme
+endif
 
 let g:python3_host_prog="/usr/bin/python3"
 
