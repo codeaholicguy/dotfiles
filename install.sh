@@ -46,9 +46,9 @@ function install_macos {
     git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
   fi
 
-  if [ "$(is_installed ag)" == "0" ]; then
-    echo "Installing The silver searcher"
-    brew install the_silver_searcher
+  if [ "$(is_installed rg)" == "0" ]; then
+    echo "Installing ripgrep"
+    brew install ripgrep
   fi
 
   if [ "$(is_installed fzf)" == "0" ]; then
